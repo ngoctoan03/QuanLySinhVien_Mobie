@@ -46,14 +46,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="addUser"
-            android:text="Lưu" />
+            android:text="SAVE" />
 
         <Button
             android:id="@+id/btnCancelUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Huỷ" />
+            android:text="CANCEL" />
     </LinearLayout>
 
     <Button
@@ -61,6 +61,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="showUsers"
-        android:text="Danh Sách Sinh Viên" />
+        android:text="LIST STUDENT" />
 
 </LinearLayout>

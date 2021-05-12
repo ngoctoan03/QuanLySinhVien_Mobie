@@ -29,7 +29,7 @@ public class ListNguoiDungActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("DANH SÁCH SINH VIÊN");
+        setTitle("LIST STUDENT ");
         setContentView(R.layout.activity_list_nguoi_dung);
         lvNguoiDung = (ListView) findViewById(R.id.lvNguoiDung);
         btnthem = (Button) findViewById(R.id.btnthem);

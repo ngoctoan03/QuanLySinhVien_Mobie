@@ -21,7 +21,7 @@ public class NguoiDungDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("CHI TIẾT SINH VIÊN");
+        setTitle("DETAILS STUDENT");
         setContentView(R.layout.activity_nguoi_dung_detail);
         edhoten = (EditText) findViewById(R.id.edHoTen);
         edlop = (EditText) findViewById(R.id.edLop);

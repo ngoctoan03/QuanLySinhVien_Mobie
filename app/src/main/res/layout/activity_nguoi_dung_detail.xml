@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="updateUser"
-            android:text="Sửa" />
+            android:text="EDIT" />
 
         <Button
             android:id="@+id/btnCancel"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="Huy"
-            android:text="Quay lại" />
+            android:text="CANCEL" />
     </LinearLayout>
 
 </LinearLayout>

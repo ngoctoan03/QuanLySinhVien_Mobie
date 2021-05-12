@@ -23,7 +23,7 @@ public class NguoiDungActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nguoi_dung);
-        setTitle("THÊM SINH VIÊN");
+        setTitle("INSERT STUDENT");
         btnThemNguoiDung = (Button) findViewById(R.id.btnAddUser);
         edhoten = (EditText) findViewById(R.id.edhoten);
         edlop = (EditText) findViewById(R.id.edlop);
