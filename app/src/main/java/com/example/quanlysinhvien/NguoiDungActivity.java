@@ -43,17 +43,20 @@ public class NguoiDungActivity extends AppCompatActivity {
         finish();
     }
 
+
     public void addUser(View view) {
         nguoiDungDAO = new NguoiDungDAO(NguoiDungActivity.this);
         NguoiDung user = new NguoiDung(edhoten.getText().toString(), edlop.getText().toString(),
                 ednoisinh.getText().toString(), edphone.getText().toString());
         try {
                 if (nguoiDungDAO.inserNguoiDung(user) > 0) {
-                    Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(NguoiDungActivity.this, ListNguoiDungActivity.class);
                     startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "add success bar", Toast.LENGTH_LONG).show();
+
+                }else{
+
+                    Toast.makeText(getApplicationContext(), "more failure", Toast.LENGTH_LONG).show();
                 }
 
         } catch (Exception ex) {

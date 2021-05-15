@@ -1,9 +1,11 @@
 package com.example.quanlysinhvien;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -44,19 +46,45 @@ public class NguoiDungDetailActivity extends AppCompatActivity {
     }
     public void updateUser(View view){
         if(nguoiDungDAO.updateInfoNguoiDung(edhoten.getText().toString(), edlop.getText().toString(),
-                ednoisinh.getText().toString(), edphone.getText().toString()) > 0)
-            {
-                Toast.makeText(getApplicationContext(), "Lưu thành công", Toast.LENGTH_SHORT).show();
+                ednoisinh.getText().toString(), edphone.getText().toString()) > 0){
+//            Intent intent = new Intent(NguoiDungDetailActivity.this,ListNguoiDungActivity.class);
+//            startActivity(intent);
+//                Toast.makeText(getApplicationContext(), "Lưu thành công", Toast.LENGTH_SHORT).show();
+                DiaLog();
             }
-                Intent intent = new Intent(NguoiDungDetailActivity.this,ListNguoiDungActivity.class);
-                startActivity(intent);
     }
-
 
     public void Huy(View view){
-
-        finish(
-
-        );
+        finish();
     }
+
+    private void DiaLog() {
+
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dia_log_detail);
+        dialog.setCanceledOnTouchOutside(false);
+
+        Button btnyess = (Button) dialog.findViewById(R.id.btnyes);
+        Button btnnoo = (Button) dialog.findViewById(R.id.btnno);
+
+        btnyess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NguoiDungDetailActivity.this,ListNguoiDungActivity.class);
+                startActivity(intent);
+                Toast.makeText(NguoiDungDetailActivity.this.getApplicationContext(), "successful fix", Toast.LENGTH_LONG).show();
+                dialog.cancel();
+            }
+        });
+        btnnoo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                    dialog.cancel();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
 }

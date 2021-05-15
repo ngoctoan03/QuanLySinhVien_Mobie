@@ -1,6 +1,7 @@
 package com.example.quanlysinhvien.adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.quanlysinhvien.ListNguoiDungActivity;
@@ -60,41 +62,74 @@ public class NguoiDungAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
-        if(convertView==null)
-        {
+        if (convertView == null) {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.item_nguoi_dung, null);
             holder.txtName = (TextView) convertView.findViewById(R.id.tvName);
             holder.txtLop = (TextView) convertView.findViewById(R.id.tvLop);
             holder.txtNoiSinh = (TextView) convertView.findViewById(R.id.tvNoiSinh);
             holder.txtPhone = (TextView) convertView.findViewById(R.id.tvPhone);
-            holder.imgDelete = (ImageView)convertView.findViewById(R.id.ivDelete);
-
+            holder.imgDelete = (ImageView) convertView.findViewById(R.id.ivDelete);
 
 
             holder.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    nguoiDungDAO.deleteNguoiDungByID(arrNguoiDung.get(position).getPhone());
-                    arrNguoiDung.remove(position);
-                    notifyDataSetChanged();
+                    //xóa không xuất hiện dialog
+//                    nguoiDungDAO.deleteNguoiDungByID(arrNguoiDung.get(position).getPhone());
+//                    arrNguoiDung.remove(position);
+//                    notifyDataSetChanged();
+//                    Toast.makeText(context.getApplicationContext(),"successfully deleted", Toast.LENGTH_SHORT).show();
+
+                    //gọi dialog
+                    DiaLog(position);
                 }
             });
 
             convertView.setTag(holder);
-        }
-        else
-            holder=(ViewHolder)convertView.getTag();
+        } else
+            holder = (ViewHolder) convertView.getTag();
 
-        NguoiDung _entry = (NguoiDung) arrNguoiDung.get(position);
-        holder.txtName.setText(_entry.getHoten());
-        holder.txtLop.setText(_entry.getLop());
-        holder.txtNoiSinh.setText(_entry.getNoisinh());
-        holder.txtPhone.setText(_entry.getPhone());
-
+            NguoiDung _entry = (NguoiDung) arrNguoiDung.get(position);
+            holder.txtName.setText(_entry.getHoten());
+            holder.txtLop.setText(_entry.getLop());
+            holder.txtNoiSinh.setText(_entry.getNoisinh());
+            holder.txtPhone.setText(_entry.getPhone());
 
         return convertView;
     }
+
+    private void DiaLog(int a) {
+
+            Dialog dialog = new Dialog(context);
+            dialog.setContentView(R.layout.dia_log);
+            dialog.setCanceledOnTouchOutside(false);
+
+            Button btnyess = (Button) dialog.findViewById(R.id.btnyes);
+            Button btnnoo = (Button) dialog.findViewById(R.id.btnno);
+
+            btnyess.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = a;
+                    nguoiDungDAO.deleteNguoiDungByID(arrNguoiDung.get(position).getPhone());
+                    arrNguoiDung.remove(position);
+                    notifyDataSetChanged();
+                    Toast.makeText(context.getApplicationContext(), "successfully deleted", Toast.LENGTH_LONG).show();
+                    dialog.cancel();
+                }
+            });
+            btnnoo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    dialog.cancel();
+                    dialog.dismiss();
+                }
+            });
+
+        dialog.show();
+    }
+
 
     @Override
     public void notifyDataSetChanged() {
@@ -107,5 +142,7 @@ public class NguoiDungAdapter extends BaseAdapter {
 
     }
 
+
 }
+
 

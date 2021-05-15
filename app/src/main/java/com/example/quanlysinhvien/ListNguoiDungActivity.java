@@ -1,13 +1,16 @@
 package com.example.quanlysinhvien;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +28,7 @@ public class ListNguoiDungActivity extends AppCompatActivity {
     NguoiDungAdapter adapter = null;
     NguoiDungDAO nguoiDungDAO;
     Button btnthem;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,9 @@ public class ListNguoiDungActivity extends AppCompatActivity {
 
             }
         });
+
+
+
         lvNguoiDung.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
